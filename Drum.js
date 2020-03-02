@@ -1,27 +1,19 @@
-window.addEventListener('keydown',playS)
-  
   document.addEventListener('click', function (event) {
 
     if(event.target.matches('kbd')) {
-      var audio = document.querySelector(`audio[data-key="${audio}"]`);
-      console.log(audio)
+      var letter = event.target.innerText;
+      console.log(letter);
+      playMusic(letter);
+      
     }
 
-    console.log(event.target);
   }, false);
 
- 
 
-function playS(e) {
-  var audio = document.querySelector(`audio[data-key="${e.keyCode}"`);
-  var key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-  
-  key.classList.add("playing")
-  audio.play();
-  console.log(key)
-}
 
-function playMusic(audio) {
+function playMusic(letter) {
   var time = 0;
+  var audio = document.querySelector(`audio[data-key="${letter}"`);
+  audio.currentTime = 0;
   audio.play();
 }
